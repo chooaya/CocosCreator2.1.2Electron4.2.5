@@ -1,0 +1,1 @@
+"use strict";var cocos_v2=require("./cocos_v2"),normal=require("./normal"),cocoscreator=require("./cocoscreator");module.exports={normal:normal,cocos_v2:cocos_v2,cocoscreator:cocoscreator};

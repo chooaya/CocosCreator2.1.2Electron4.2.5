@@ -1,0 +1,143 @@
+:host {
+    width: 210px;
+    height: 304px;
+    background: #474747;
+    position: absolute;
+    z-index: 999;
+
+    border: 1px solid #555;
+
+    color: #bdbdbd;
+    background-color: #474747;
+    box-shadow: 0 0 15px 2px rgba(0,0,0,0.5);
+}
+
+:host[no-alpha] {
+    height: 254px;
+}
+
+.color-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+    width: 190px;
+    height: 150px;
+    margin: 10px;
+    position: relative
+}
+
+:host[no-alpha] .hue {
+    margin-left: 2px;
+    margin-right: 10px;
+}
+
+.hue {
+    position: relative;
+    width: 20px;
+    height: 150px;
+    border: 1px solid black;
+    margin-right: 6px;
+
+    cursor: crosshair;
+
+    background-image: url('color-picker.png');
+    background-position: 0px 0px;
+}
+
+.hue .handle {
+    position: absolute;
+    color: white;
+}
+
+.hue .handle i {
+    position: absolute;
+    font-size: 12px;
+    top: -6px;
+    left: -6px;
+}
+
+:host[no-alpha] .color {
+    margin-right: 0;
+}
+
+.color {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    margin-right: 6px;
+
+    cursor: crosshair;
+
+    background-image: url('color-picker.png');
+    background-position: -40px 0px;
+}
+
+.color .handle {
+    position: absolute;
+    color: black;
+}
+
+.color .handle i {
+    position: absolute;
+    font-size: 13px;
+    top: -6px;
+    left: -6px;
+}
+
+:host[no-alpha] .opacity {
+    display: none;
+}
+
+.opacity {
+    position: relative;
+    width: 20px;
+    height: 150px;
+    border: 1px solid black;
+
+    cursor: crosshair;
+
+    background-image: url('color-picker.png');
+    background-position: -20px 0px;
+}
+
+.opacity .handle {
+    position: absolute;
+    color: white;
+    right: 0;
+}
+
+.opacity .handle i {
+    position: absolute;
+    font-size: 12px;
+    top: -6px;
+    right: -6px
+}
+
+.storageGroup {
+    height: 0;
+    position: relative;
+}
+
+.storageGroup color-storage {
+    position: absolute;
+    z-index: 1;
+    top: -66px;
+    left: 10px;
+}
+
+.inputGroup {
+    display: flex;
+    margin: 10px;
+    margin-top: 0px;
+    flex-flow: column nowrap;
+}
+
+:host[no-alpha] .input:last-child {
+    display: none
+}
+
+.input {
+    margin: 2px 0px;
+}

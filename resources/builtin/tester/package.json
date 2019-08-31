@@ -1,0 +1,25 @@
+{
+  "name": "tester",
+  "version": "0.0.1",
+  "description": "A man who test your code day and night without payment.",
+  "author": "Firebox Technology",
+  "main": "main.js",
+  "main-menu": {
+    "i18n:MAIN_MENU.developer.title/Tester": {
+      "icon": "panel/icon.png",
+      "accelerator": "CmdOrCtrl+Shift+T",
+      "message": "tester:open"
+    }
+  },
+  "panel": {
+    "main": "panel/panel.js",
+    "type": "dockable",
+    "title": "Tester",
+    "icon": "panel/icon.png",
+    "width": 500,
+    "height": 800,
+    "min-width": 200,
+    "min-height": 200,
+    "shortcuts": {}
+  }
+}

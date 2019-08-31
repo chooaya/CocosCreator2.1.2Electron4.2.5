@@ -1,0 +1,28 @@
+{
+  "name": "ui-kit",
+  "version": "0.1.4",
+  "description": "Editor Framework UI Kit",
+  "author": "Firebox Technology",
+  "entry-dir": "./bin",
+  "main": "main.js",
+  "main-menu": {
+    "i18n:MAIN_MENU.developer.title/UI Preview/ui-kit": {
+      "message": "ui-kit:open"
+    }
+  },
+  "panel": {
+    "main": "panel/panel.html",
+    "ui": "polymer",
+    "type": "dockable",
+    "title": "UI Kit Preview",
+    "width": 800,
+    "height": 600,
+    "messages": []
+  },
+  "profiles": {
+    "local": {
+      "scrollTop": 0,
+      "select": "editor-button-preview"
+    }
+  }
+}

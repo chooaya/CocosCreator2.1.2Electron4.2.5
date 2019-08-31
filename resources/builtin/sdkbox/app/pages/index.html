@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <title>SDKBOX GUI</title>
+    <meta name="description" content="Help mobile developers to integrate service SDKs">
+    <meta name="keywords" content="mobile, service, game, SDK, integration, cocos2d-x, unity, unity3d, unreal, c++, lua, javascript">
+
+    <link rel="stylesheet" href="../assets/css/genericons/genericons.css"/>
+    <link rel="stylesheet" href="../assets/css/sdkbox-gui.css"/>
+    <link rel="stylesheet" href="../assets/css/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="../assets/css/jquery-ui.theme.css"/>
+
+    <link rel="stylesheet" href="../assets/css/sdkbox-gui-tab-cocos.css"/>
+
+    <link rel="import" href="tab-home.html">
+    <link rel="import" href="tab-cocos.html">
+    <link rel="import" href="tab-unity.html">
+    <link rel="import" href="tab-unreal.html">
+
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <script src="../assets/js/jquery-1.11.3.min.js"></script>
+    <script src="../assets/js/jquery-ui.min.js"></script>
+
+    <script>if (window.module) module = window.module;</script>
+
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+</head>
+<body class="">
+
+<div id="header">
+    <div class="logo"></div>
+
+    <div class="userinfo">
+        <div class="username"><a href="#" onclick="this.blur(); return false;">username</a></div>
+    </div>
+</div>
+
+<div id="tabbar">
+<ul>
+    <li tag="cocos">Cocos</li>
+    <li tag="unity">Unity</li>
+    <li tag="unreal">Unreal</li>
+</ul>
+</div>
+
+<div id="contents"></div>
+
+<div id="statusbar">
+    <ul>
+        <li>CURRENT DAU: 000,000</li>
+        <li>TODAY IAP: $000,000</li>
+        <li>TODAY AD: $000,000</li>
+    </ul>
+</div>
+
+<div id="contractinfo">
+    Contract SDKBox at https://discuss.cocos2d-x.org/c/services/sdkbox or QQ Group(ID:489182678)
+</div>
+
+<script type="text/javascript" src="../dist/rendererext.js"></script>
+
+</body>
+</html>

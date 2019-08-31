@@ -1,0 +1,73 @@
+<link rel="import" href="packages://ui-kit/widget/unit-input/unit-input.html">
+<link rel="import" href="color-storage.html">
+
+<dom-module id="color-picker">
+    <link rel="import" type="css" href="color-picker.css">
+
+    <template>
+        <div class="color-group">
+            <div id="hueCtrl" class="hue" on-mousedown="_hueCtrlMouseDownAction">
+                <div id="hueHandle" class="handle">
+                    <i class="fa fa-caret-right"></i>
+                </div>
+            </div>
+            <div id="colorCtrl" class="color" on-mousedown="_colorCtrlMouseDownAction">
+                <div id="colorHandle" class="handle">
+                    <i style="color: white;" class="fa fa-circle-o"></i>
+                    <i style="color: black;" class="fa fa-circle-thin"></i>
+                </div>
+            </div>
+            <div id="opacityCtrl" class="opacity" on-mousedown="_opacityCtrlMouseDownAction">
+                <div id="opacityHandle" class="handle">
+                    <i class="fa fa-caret-left"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="storageGroup">
+            <color-storage
+                    id="storage"
+                    storage="[[storage]]"
+                    on-mouseover="_onCssMouseOver"
+                    on-mouseout="_onCssMouseOut"
+                    hidden></color-storage>
+        </div>
+
+        <div class="inputGroup">
+            <div class="input">
+                <editor-input
+                    value="[[css]]"
+                    on-value-changed="_onCssInputChanged"
+                    on-mouseover="_onCssMouseOver"
+                    on-mouseout="_onCssMouseOut"
+                ></editor-input>
+            </div>
+            <div class="input">
+                <editor-unit-input hint="R" hint-color="red" min="0" max="255"
+                    input-value="[[value.r]]"
+                    on-input-value-changed="_onInputChanged"
+                ></editor-unit-input>
+            </div>
+            <div class="input">
+                <editor-unit-input hint="G" hint-color="green" min="0" max="255"
+                    input-value="[[value.g]]"
+                    on-input-value-changed="_onInputChanged"
+                ></editor-unit-input>
+            </div>
+            <div class="input">
+                <editor-unit-input hint="B" hint-color="blue" min="0" max="255"
+                    input-value="[[value.b]]"
+                    on-input-value-changed="_onInputChanged"
+                ></editor-unit-input>
+            </div>
+            <div class="input">
+                <editor-unit-input hint="ALPHA" min="0" max="255" step="1"
+                    input-value="[[value.a]]"
+                    on-input-value-changed="_onInputChanged"
+                ></editor-unit-input>
+            </div>
+        </div>
+    </template>
+
+    <script type="text/javascript" src="color-picker.js"></script>
+</dom-module>

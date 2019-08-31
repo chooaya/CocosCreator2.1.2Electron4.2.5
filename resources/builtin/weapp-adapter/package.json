@@ -1,0 +1,5 @@
+{
+  "name": "weapp-adapter",
+  "version": "1.0.0",
+  "build-template": "wechatgame"
+}

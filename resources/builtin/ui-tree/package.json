@@ -1,0 +1,26 @@
+{
+  "name": "ui-tree",
+  "version": "0.1.4",
+  "description": "Tree View Widgets",
+  "author": "Firebox Technology",
+  "main": "main.js",
+  "main-menu": {
+    "i18n:MAIN_MENU.developer.title/UI Preview/ui-tree": {
+      "message": "ui-tree:open",
+      "dev": true
+    }
+  },
+  "panel.preview": {
+    "main": "panel/preview.html",
+    "ui": "polymer",
+    "type": "dockable",
+    "title": "Tree Widgets Preview"
+  },
+  "widgets": {
+    "tree-item": "widget/tree-item/tree-item.html",
+    "tree-view": "widget/tree-view/tree-view.html"
+  },
+  "tests": [
+    "test/id-tree.html"
+  ]
+}

@@ -1,0 +1,40 @@
+<link rel="import" href="packages://ui-kit/widget/index.html">
+
+<dom-module id="asset-db-debugger">
+    <link rel="import" type="css" href="asset-db-debugger.css">
+
+    <template>
+        <editor-toolbar>
+            <editor-button on-click="_refReshClick">
+                <i class="fa fa-rotate-right"></i>
+            </editor-button>
+            <span class="space"></span>
+            <editor-buttons  id="select" on-selected-changed="_onSelectedChanged">
+                <editor-buttons-item>URL to UUID</editor-buttons-item>
+                <editor-buttons-item>UUID to URL</editor-buttons-item>
+            </editor-buttons>
+            <span class="space"></span>
+            <editor-input class="flex-1" placeholder="Search..." input-value="{{searchValue}}"></editor-input>
+        </editor-toolbar>
+        <div class="view flex-1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{keyName}}</th>
+                        <th>{{valueName}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template is="dom-repeat" items="{{filter(infoList,searchValue)}}">
+                        <tr>
+                            <td class="key">{{item.key}}</td>
+                            <td class="value">{{item.value}}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+    <script type="text/javascript" src="asset-db-debugger.js"></script>
+</dom-module>

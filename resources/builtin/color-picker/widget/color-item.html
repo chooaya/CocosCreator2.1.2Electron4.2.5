@@ -1,0 +1,62 @@
+<dom-module id="color-item">
+    <style>
+        :host {
+            width: 23px;
+            height: 23px;
+            margin: 0 4px 4px 0;
+            float: left;
+            background: white;
+            border: 1px solid #555;
+            cursor: pointer;
+        }
+    </style>
+
+    <template></template>
+
+    <script type="text/javascript">
+        'use strict'
+
+        Editor.polymerElement({
+            listeners: {
+                'click': '_onClick',
+                'dblclick': '_onDbClick'
+            },
+
+            properties: {
+                color: {
+                    type: String,
+                    value: '',
+                    observer: '_onColorChanged'
+                }
+            },
+
+            created () {
+            },
+
+            ready () {
+            },
+
+            _onColorChanged ( color ) {
+                var style = this.style;
+                style['background'] = color;
+            },
+
+            _onClick ( event ) {
+                event.stopPropagation();
+                event.preventDefault();
+                clearTimeout(this._cilckTimer);
+                this._cilckTimer = setTimeout(function () {
+                    this.fire('select-color', this.color);
+                }.bind(this), 300);
+            },
+
+            _onDbClick ( event ) {
+                event.stopPropagation();
+                event.preventDefault();
+                clearTimeout(this._cilckTimer);
+                this.fire('change-color', this.index);
+            }
+
+        });
+    </script>
+</dom-module>

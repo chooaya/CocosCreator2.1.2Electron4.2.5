@@ -1,0 +1,5 @@
+{
+  "name": "baidu-adapter",
+  "version": "1.0.0",
+  "build-template": "baidugame"
+}

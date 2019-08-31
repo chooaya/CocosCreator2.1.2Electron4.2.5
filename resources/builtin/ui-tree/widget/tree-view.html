@@ -1,0 +1,28 @@
+<script type="text/javascript" src="id-tree.js"></script>
+
+<dom-module id="tree-view">
+    <link rel="import" type="css" href="tree-view.css">
+
+    <template>
+        <content></content>
+        <div id="highlightBorder" class="highlight"></div>
+        <div id="insertLine" class="insert"></div>
+        <editor-input id="nameInput" style="display:none"></editor-input>
+    </template>
+
+    <script>
+        Editor.polymerElement({
+
+            behaviors: [Editor.UI.idtree],
+
+            properties: {
+            },
+
+            created: function () {
+            },
+
+            ready: function () {
+            },
+        });
+    </script>
+</dom-module>

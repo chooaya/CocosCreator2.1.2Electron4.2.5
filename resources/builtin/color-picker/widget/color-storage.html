@@ -1,0 +1,22 @@
+<link rel="import" href="color-item.html">
+
+<dom-module id="color-storage">
+    <link rel="import" type="css" href="color-storage.css">
+
+    <template>
+
+        <div class="content">
+            <template is="dom-repeat" items="[[colors]]">
+                <color-item
+                        index="[[index]]"
+                        color="[[item]]"
+                        title="双击将当前颜色保存到这里"
+                ></color-item>
+            </template>
+        </div>
+        <div class="arrow"></div>
+
+    </template>
+
+    <script type="text/javascript" src="color-storage.js"></script>
+</dom-module>

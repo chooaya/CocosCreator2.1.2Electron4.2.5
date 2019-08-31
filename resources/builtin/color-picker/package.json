@@ -1,0 +1,9 @@
+{
+  "name": "color-picker",
+  "version": "0.1.4",
+  "description": "A Color-Picker Element",
+  "author": "Firebox Technology",
+  "tests": [
+    "test/basic.html"
+  ]
+}

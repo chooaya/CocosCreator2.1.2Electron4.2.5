@@ -1,0 +1,220 @@
+<html>
+    <head>
+        <title>id-tree tests</title>
+        <meta charset="utf-8">
+        <link rel="import" href="packages://tester/env/env-widget.html">
+        <script type="text/javascript" src="packages://ui-tree/widget/id-tree.js"></script>
+
+        <dom-module id="test-id-tree">
+            <template>
+                <div id="tree"></div>
+            </template>
+            <script>
+                var TestIDTree = Polymer({
+                    is: 'test-id-tree',
+                    behaviors: [Editor.UI.idtree],
+                });
+            </script>
+        </dom-module>
+    </head>
+
+    <body>
+        <div id="test-area"></div>
+        <script>
+            function newEL ( name ) {
+                var el = document.createElement('div');
+                return el;
+            }
+
+            describe('basic methods', function () {
+                var testAreaEL = document.getElementById('test-area');
+                var targetEL = null;
+                beforeEach(function ( done ) {
+                    targetEL = new TestIDTree();
+                    testAreaEL.appendChild(targetEL);
+                    done();
+                });
+                afterEach(function ( done ) {
+                    testAreaEL.removeChild(targetEL);
+                    targetEL = null;
+                    done();
+                });
+
+                it( 'should be able add element at the root', function ( done ) {
+                    targetEL.addItem( targetEL, newEL(), {
+                        id: 'id-foobar',
+                        name: 'foobar',
+                    } );
+                    targetEL.addItem( targetEL, newEL(), {
+                        id: 'id-foobar-02',
+                        name: 'foobar',
+                    } );
+
+                    expect( Polymer.dom(targetEL).children.length ).to.be.equal(2);
+                    expect( Polymer.dom(targetEL).children[0]._userId ).to.be.equal('id-foobar');
+                    expect( Polymer.dom(targetEL).children[1]._userId ).to.be.equal('id-foobar-02');
+
+                    done();
+                });
+
+                it( 'should be able add element at the child', function ( done ) {
+                    var foobarEL = newEL();
+                    targetEL.addItem( targetEL, foobarEL, {
+                        id: 'id-foobar',
+                        name: 'foobar',
+                    } );
+
+                    var foobarEL02 = newEL();
+                    targetEL.addItem( foobarEL, foobarEL02, {
+                        id: 'id-foobar-02',
+                        name: 'foobar 02',
+                    } );
+
+                    expect( Polymer.dom(targetEL).children.length ).to.be.equal(1);
+                    expect( Polymer.dom(targetEL).children[0]._userId ).to.be.equal('id-foobar');
+
+                    expect( Polymer.dom(foobarEL).children.length ).to.be.equal(1);
+                    expect( Polymer.dom(foobarEL).children[0]._userId ).to.be.equal('id-foobar-02');
+
+                    expect( targetEL.foldable ).to.be.equal(undefined);
+                    expect( foobarEL.foldable ).to.be.equal(true);
+                    expect( foobarEL02.foldable ).to.be.equal(false);
+
+                    done();
+                });
+
+                it( 'should be able throw error when id not provide', function ( done ) {
+                    var fn = function () {
+                        targetEL.addItem( targetEL, newEL(), {
+                            name: 'foobar'
+                        } );
+                    }
+                    expect(fn).to.throw(Error);
+
+                    done();
+                });
+
+                it( 'should be able throw error when add same id child', function ( done ) {
+                    targetEL.addItem( targetEL, newEL(), {
+                        id: 'id-foobar',
+                        name: 'foobar'
+                    } );
+                    var fn = function () {
+                        targetEL.addItem( targetEL, newEL(), {
+                            id: 'id-foobar',
+                            name: 'foobar 02'
+                        } );
+                    }
+                    expect(fn).to.throw(Error);
+
+                    done();
+                });
+
+                it( 'should be able to remove elements', function ( done ) {
+                    var fooEL = newEL();
+                    targetEL.addItem( targetEL, fooEL, {
+                        id: 'id-foo',
+                        name: 'foo'
+                    } );
+                    for ( var i = 0; i < 10; ++i ) {
+                        targetEL.addItem( fooEL, newEL(), {
+                            id: 'id-bar-' + i,
+                            name: 'bar ' + i,
+                        } );
+                    }
+
+                    targetEL.removeItem( fooEL );
+
+                    expect( Polymer.dom(targetEL).children.length ).to.be.equal(0);
+                    expect( targetEL._id2el ).to.be.deep.equal({});
+
+                    done();
+                });
+
+                it( 'should be able to remove elements by id', function ( done ) {
+                    var fooEL = newEL();
+                    targetEL.addItem( targetEL, fooEL, {
+                        id: 'id-foo',
+                        name: 'foo',
+                    } );
+                    for ( var i = 0; i < 10; ++i ) {
+                        targetEL.addItem( fooEL, newEL(), {
+                            id: 'id-bar-' + i,
+                            name: 'bar ' + i,
+                        } );
+                    }
+
+                    targetEL.removeItemById( 'id-bar-1' );
+                    targetEL.removeItemById( 'id-bar-2' );
+
+                    expect( Polymer.dom(fooEL).children.length ).to.be.equal(8);
+
+                    done();
+                });
+
+                it( 'should be able to change parent', function ( done ) {
+                    var fooEL = newEL();
+                    targetEL.addItem( targetEL, fooEL, {
+                        id: 'id-foo',
+                        name: 'foo'
+                    } );
+
+                    var barEL = newEL();
+                    targetEL.addItem( targetEL, barEL, {
+                        id: 'id-bar',
+                        name: 'bar'
+                    } );
+
+                    targetEL.setItemParent( barEL, fooEL );
+
+                    expect( Polymer.dom(fooEL).children[0] ).to.be.equal(barEL);
+                    expect( Polymer.dom(targetEL).children.length ).to.be.equal(1);
+
+                    done();
+                });
+
+                it( 'should be able to change parent by id', function ( done ) {
+                    var fooEL = newEL();
+                    targetEL.addItem( targetEL, fooEL, {
+                        id: 'id-foo',
+                        name: 'foo',
+                    } );
+
+                    var barEL = newEL();
+                    targetEL.addItem( targetEL, barEL, {
+                        id: 'id-bar',
+                        name: 'bar',
+                    } );
+
+                    targetEL.setItemParentById( 'id-bar', 'id-foo' );
+
+                    expect( Polymer.dom(fooEL).children[0] ).to.be.equal(barEL);
+                    expect( Polymer.dom(targetEL).children.length ).to.be.equal(1);
+
+                    done();
+                });
+
+                it( 'should be able to report error when set item parent to its child', function ( done ) {
+                    var fooEL = newEL();
+                    targetEL.addItem( targetEL, fooEL, {
+                        id: 'id-foo',
+                        name: 'foo'
+                    } );
+
+                    var barEL = newEL();
+                    targetEL.addItem( fooEL, barEL, {
+                        id: 'id-bar',
+                        name: 'bar',
+                    } );
+
+                    var fn = function () {
+                        targetEL.setItemParent( fooEL, barEL );
+                    };
+                    expect(fn).to.throw(Error);
+
+                    done();
+                });
+            });
+        </script>
+    </body>
+</html>

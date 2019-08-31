@@ -1,0 +1,42 @@
+{
+  "name": "ui-grid",
+  "version": "0.1.4",
+  "description": "A Grid Widget",
+  "author": "Firebox Technology",
+  "main": "main.js",
+  "widgets": {
+    "pixi-grid": "widget/pixi-grid.html"
+  },
+  "main-menu": {
+    "i18n:MAIN_MENU.developer.title/UI Preview/ui-grid": {
+      "message": "ui-grid:open",
+      "dev": true
+    },
+    "i18n:MAIN_MENU.developer.title/UI Preview/ui-grid-webview": {
+      "message": "ui-grid:open-webview",
+      "dev": true
+    }
+  },
+  "panel.preview": {
+    "main": "panel/preview.html",
+    "ui": "polymer",
+    "type": "dockable",
+    "title": "Grid",
+    "width": 800,
+    "height": 600,
+    "min-width": 400,
+    "min-height": 300,
+    "messages": []
+  },
+  "panel.preview-webview": {
+    "main": "panel/preview-webview.html",
+    "ui": "polymer",
+    "type": "dockable",
+    "title": "Grid WebView",
+    "width": 800,
+    "height": 600,
+    "min-width": 400,
+    "min-height": 300,
+    "messages": []
+  }
+}
