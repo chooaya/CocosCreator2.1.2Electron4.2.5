@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "archiver": "^3.0.0",
-    "jsrsasign": "^7.1.2"
+    "jsrsasign": "^8.0.19"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
