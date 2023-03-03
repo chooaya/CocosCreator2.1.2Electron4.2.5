@@ -6,6 +6,6 @@
     "main": "dist/main.js",
     "author": "sdkbox.com",
     "dependencies": {
-        "mkdirp": "^0.5.1"
+        "mkdirp": "^0.5.6"
     }
 }
